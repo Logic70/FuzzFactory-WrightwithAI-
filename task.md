@@ -4,9 +4,9 @@
     - [x] High-Level Design (HLD) <!-- id: design-0 -->
     - [x] 需求分析列表 (SF-IR-SR) <!-- id: design-1 -->
     - [x] Low-Level Design (LLD) <!-- id: design-2 -->
-- [ ] **项目初始化 (Project Initialization)**
-    - [ ] 搭建项目目录结构 (Master/Agent/Proto) <!-- id: 0 -->
-    - [ ] 编写依赖与环境配置文件 (requirements.txt / Dockerfile) <!-- id: 1 -->
+- [x] **项目初始化 (Project Initialization)**
+    - [x] 搭建项目目录结构 (Master/Agent/Proto) <!-- id: 0 -->
+    - [x] 编写依赖与环境配置文件 (requirements.txt / Dockerfile) <!-- id: 1 -->
 - [ ] **Infrastructure: 环境与基础架构**
     - [ ] Master Node Docker-Compose 编排 <!-- id: 11 -->
     - [ ] Agent Node 硬件驱动检查脚本 (WiFi/BLE/Serial) <!-- id: 12 -->

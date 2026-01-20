@@ -2,7 +2,6 @@
 
 ## 1. 简介
 本模块负责处理具备源码的各组件（如开源解析库、白盒固件），通过静态分析识别攻击面，并自动生成 Fuzz 驱动代码，最大化覆盖率。
-**注意**: 静态分析 (Static Analysis) 与 模糊测试 (Fuzzing) 应解耦。静态分析作为构建系统的“预处理”步骤，生成 Harness 和 Config；Fuzz 阶段仅需拉取制品运行，以支持容器化和分布式部署。
 
 ## 2. 系统上下文
 ```mermaid
@@ -21,7 +20,6 @@ graph TD
     *   集成 CodeQL CLI v2.16+。
     *   针对 C/C++ 代码建立数据库。
     *   关键规格：支持 >100万行代码项目的分析，分析时长控制在Build时长的3倍以内。
-    *   **解耦设计**: 分析过程产出标准化制品 (Sources/Sinks JSON)，不依赖 Fuzz 运行时环境。
 *   **实现思路**: 
     *   使用 subprocess 调用 CodeQL 命令行。
     *   编写自定义 `.ql` 查询脚本，定义常见的 IoT 危险函数 Sink (e.g., `system`, `strcpy`) 以及外部输入 Source (e.g., `recv`, `read_file`)。

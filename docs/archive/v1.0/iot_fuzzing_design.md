@@ -57,7 +57,6 @@ graph TD
 ### 3.2 协议模糊测试 (Protocol Fuzzing)
 针对设备对外接口进行黑/灰盒测试。
 *   **基于状态机**: 自动推断协议状态（如：连接->认证->功能），避免在无效状态下Fuzz。
-*   **流量学习**: 支持导入 PCAP 流量包，自动生成 Boofuzz 脚本骨架，降低适配成本。
 *   **物理层适配**: 
     *   **WiFi**: monitor模式注入 802.11 管理帧。
     *   **BLE**: 模拟 Central/Peripheral 角色交互。
@@ -74,14 +73,13 @@ graph TD
 ## 4. 实现架构 (Implementation Architecture)
 
 ### 4.1 运行框架 (Runtime Framework)
-采用 **Master-Slave 分布式架构**，并推行 **Docker-First** 策略以降低部署复杂度：
+采用 **Master-Slave 分布式架构**：
 *   **Master Node**: 
     *   部署于 Linux Server (Docker化)。
     *   负责任务调度、语料库同步 (Corpus Sync)、去重分析 (Deduplication)。
 *   **Agent Nodes**: 
-    *   **Protocol Agent**: 运行于 Kali Linux (ISO/Docker)，直通 USB/无线网卡。
+    *   **Protocol Agent**: 运行于 Kali Linux，直通 USB/无线网卡。
     *   **Mobile Agent**: 运行于 Mac/Windows/Linux，连接 Android/HarmonyOS 真机。
-    *   **Source Agent**: 纯 Docker 容器化部署，用于编译和运行纯软件 Fuzz 任务。
 
 ### 4.2 通信框架 (Communication Framework)
 *   **控制平**: 使用 **gRPC (Protobuf)**，保证强类型约束与高性能。

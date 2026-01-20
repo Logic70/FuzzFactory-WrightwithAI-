@@ -57,25 +57,3 @@ graph TD
     *   **OS Libraries**: `WeasyPrint` 依赖 `libcairo2`, `libpango-1.0` 等系统图形库。
     *   **Fonts**: 需预装中文字体 (如 Noto Sans CJK) 以避免报告乱码。
     *   **Docker Reference**: Dockerfile 中需包含 `RUN apt-get install -y libcairo2 libpango-1.0-0`。
-
-### SR-06-05: 飞行前自检 (Pre-flight Check)
-*   **功能概述与关键规格**: 
-    *   在任务执行前，强制检查环境与硬件状态，防止“无效 Fuzz”。
-*   **检查项**:
-    *   **Agent 存活**: gRPC 心跳是否正常。
-    *   **硬件就绪**: WiFi 网卡是否在 monitor 模式？Bluetooth Dongle 是否插入？
-    *   **目标可达**: Target IP 是否 Ping 通？PDU 鉴权是否通过？
-*   **实现设计**:
-    *   **Validator Pattern**: 定义 `BaseValidator`，各 Agent 实现具体检查逻辑。
-    *   任务状态机新增 `CHECKING` 状态，失败则直接进入 `ERROR`，不消耗资源。
-
-### SR-06-06: 可观测性 (Observability)
-*   **功能概述与关键规格**: 
-    *   实时展示 Fuzz 过程中的关键指标，提供“心电图”式的监控体验。
-*   **指标**:
-    *   **Exec/s**: 每秒执行次数。
-    *   **Coverage**: 代码覆盖率 (Bitmap density / Edge count)。
-    *   **Last Crash**: 距离上一次 Crash 的时间。
-*   **实现设计**:
-    *   **Push Model**: Agent 每 3-5 秒通过 WebSocket 推送一次 Metrics。
-    *   **Frontend**: 使用 ECharts 绘制实时波形图。

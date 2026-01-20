@@ -87,17 +87,5 @@ graph TD
         *   **定位**: 数据中心/实验室。
         *   **控制库**: `synlinkpy` 或通过 `telnetlib` 交互。
         *   **优势**: 极其稳定，支持 Telnet/SSH/HTTP 多种协议。
+*   **实现思路**: 
     *   在 `infra/hardware/pdu.py` 中实现统一适配器接口 `BasePDU`，封装上述不同库。
-
-### SR-02-06: 流量学习 (Traffic Learning)
-*   **功能概述与关键规格**:
-    *   解析 PCAP 流量包，自动识别协议字段（TLV, String, Integer）。
-    *   自动生成 Boofuzz 脚本骨架，减少人工编写状态机 80% 的工作量。
-*   **实现思路**:
-    *   利用 `Netzob` 或 `Scapy` 进行协议逆向分析。
-    *   基于聚类算法识别固定 Header 和变长 Payload。
-*   **实现设计**:
-    *   **Importer**: 读取 `.pcap` 文件，提取 TCP/UDP Payload。
-    *   **Generator**: 映射识别到的字段到 Boofuzz 的 `s_block`, `s_string`, `s_size` 原语。
-*   **接口设计**: 
-    *   `learn_from_pcap(pcap_file) -> boofuzz_script.py`
