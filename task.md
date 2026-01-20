@@ -1,0 +1,28 @@
+# 任务清单 (Task List)
+
+- [x] **方案设计 (Design & Planning)**
+    - [x] High-Level Design (HLD) <!-- id: design-0 -->
+    - [x] 需求分析列表 (SF-IR-SR) <!-- id: design-1 -->
+    - [x] Low-Level Design (LLD) <!-- id: design-2 -->
+- [ ] **项目初始化 (Project Initialization)**
+    - [ ] 搭建项目目录结构 (Master/Agent/Proto) <!-- id: 0 -->
+    - [ ] 编写依赖与环境配置文件 (requirements.txt / Dockerfile) <!-- id: 1 -->
+- [ ] **Infrastructure: 环境与基础架构**
+    - [ ] Master Node Docker-Compose 编排 <!-- id: 11 -->
+    - [ ] Agent Node 硬件驱动检查脚本 (WiFi/BLE/Serial) <!-- id: 12 -->
+    - [ ] 智能PDU/串口控制脚本封装 <!-- id: 13 -->
+- [ ] **Core: 控制中心 (Master Node)**
+    - [ ] 定义 Master-Agent 通信协议 (gRPC/Protobuf) <!-- id: 2 -->
+    - [ ] 实现任务分发与状态管理模块 <!-- id: 3 -->
+    - [ ] 实现基础 Web Dashboard 骨架 <!-- id: 4 -->
+- [ ] **Module: 协议 Fuzz 代理 (Protocol Agent)**
+    - [ ] 集成 Boofuzz 引擎接口 <!-- id: 5 -->
+    - [ ] 实现简单的 Socket 发包与存活检测 <!-- id: 6 -->
+- [ ] **Module: Android Fuzz 代理**
+    - [ ] 封装 ADB Device Manager (设备连接管理) <!-- id: 7 -->
+    - [ ] 实现简单的 Intent Fuzz 投递器 <!-- id: 8 -->
+    - [ ] 调研并集成 hdc 命令行工具 <!-- id: 9 -->
+    - [ ] 编写 ArkTS 基础测试 Harness <!-- id: 10 -->
+- [ ] **Module: 结果闭环 (Reporting & CI/CD)**
+    - [ ] 实现标准 Crash 报告生成器 (PDF/HTML) <!-- id: 14 -->
+    - [ ] 定义 Webhook 接口对接 Jenkins/GitLab CI <!-- id: 15 -->
