@@ -6,7 +6,8 @@
 ## 2. 系统上下文
 ```mermaid
 graph TD
-    Agent[API Fuzz Agent] -->|HTTP Request| LB[Load Balancer / Gateway]
+    Master[Master Node] -->|Task Info| Agent[API Fuzz Agent]
+    Agent -->|HTTP Request| LB[Load Balancer / Gateway]
     LB -->|Route| WebServer[IoT Web Server]
     LB -->|Route| CloudAPI[Cloud API Service]
     

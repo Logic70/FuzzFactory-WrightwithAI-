@@ -6,7 +6,7 @@
 ## 2. 系统上下文
 ```mermaid
 graph TD
-    User[User/Git] -->|Source Code| pre[Preprocessor]
+    Master[Master Node] -->|Git URL| pre[Preprocessor]
     pre -->|DB| CodeQL[CodeQL Engine]
     CodeQL -->|Taint Paths| Generator[Harness Generator]
     Generator -->|stub.cc| Builder[Compiler Wrapper]

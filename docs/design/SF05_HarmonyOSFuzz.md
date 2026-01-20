@@ -6,7 +6,7 @@
 ## 2. 系统上下文
 ```mermaid
 graph TD
-    subgraph "Host (PC)"
+    subgraph "Mobile Agent (Host PC)"
         HDC[HDC Client]
         FuzzScript[ArkTS Fuzzer Script]
         Clang[LLVM Toolchain]

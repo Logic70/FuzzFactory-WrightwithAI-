@@ -18,6 +18,7 @@ graph TD
     CI((CI/CD Pipeline)) -->|2. Trigger Scan| Master
     
     Master -->|3. Dispatch| Agent_Proto[Protocol Agent]
+    Master -->|3. Dispatch| Agent_API[API/Web Agent]
     Master -->|3. Dispatch| Agent_Mobile[Mobile Agent]
     Master -->|3. Dispatch| Agent_Code[Source Code Agent]
     
@@ -27,6 +28,7 @@ graph TD
     end
     
     Agent_Proto -->|4. Fuzz Protocol| IoT_Device
+    Agent_API -->|4. Fuzz HTTP/RPC| IoT_Device
     Agent_Mobile -->|5. Fuzz IPC/UI| App
     IoT_Device -.->|6. Serial Logs| Agent_Proto
     

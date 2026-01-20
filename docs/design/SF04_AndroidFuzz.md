@@ -6,7 +6,7 @@
 ## 2. 系统上下文
 ```mermaid
 graph TD
-    subgraph "Agent Host (PC)"
+    subgraph "Mobile Agent (Host PC)"
         Manager[Device Manager]
         IPCFuzzer[Intent Fuzzer]
         NativeFuzzer[QEMU / LibFuzzer]
